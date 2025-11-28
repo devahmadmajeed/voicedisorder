@@ -1,0 +1,8 @@
+streamlit
+transformers
+torch
+torchaudio
+sentencepiece
+protobuf
+soundfile
+audio-recorder-streamlit
