@@ -86,8 +86,8 @@ def calculate_similarity(emb1, emb2):
 REFERENCE_AUDIOS = {
     "male": {
         "A": "male_A1.wav",
-        "E": "male_E2.wav",
-        "O": "male_O3.wav"
+        "E": "male_E1.wav",
+        "O": "male_O1.wav"
     },
     "female": {
         "A": "female_A.wav",
