@@ -1,13 +1,16 @@
+# Standard library imports
+import os
+import tempfile
+import base64
+from pathlib import Path
+
+# Third-party imports
 import streamlit as st
-from transformers import Wav2Vec2Processor, Wav2Vec2Model
 import torch
 import torchaudio
-import tempfile
-import os
-from pathlib import Path
 import soundfile as sf
 import numpy as np
-import base64
+from transformers import Wav2Vec2Processor, Wav2Vec2Model
 
 # Initialize session state
 if 'recorded_audio' not in st.session_state:
