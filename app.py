@@ -12,7 +12,8 @@ import soundfile as sf
 import numpy as np
 from transformers import Wav2Vec2Processor, Wav2Vec2Model
 
-# Initialize session state
+# Initialize session state variables
+# These persist across reruns to maintain user data
 if 'recorded_audio' not in st.session_state:
     st.session_state.recorded_audio = None
 if 'audio_key' not in st.session_state:
