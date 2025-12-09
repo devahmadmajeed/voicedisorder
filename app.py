@@ -18,6 +18,13 @@ if 'audio_key' not in st.session_state:
 # Initialize model and processor
 @st.cache_resource
 def load_model():
+    """
+    Load Wav2Vec2 model and processor from local directory or HuggingFace.
+    Uses Streamlit cache to avoid reloading on every rerun.
+    
+    Returns:
+        tuple: (processor, model) - Wav2Vec2 processor and model instances
+    """
     local_model_path = "./wav2vec2-base"
     
     try:
@@ -41,7 +48,15 @@ TARGET_SR = 16000
 TARGET_LEN = int(5 * TARGET_SR)
 
 def get_embed(audio_path):
-    """Extract embedding from audio file"""
+    """
+    Extract embedding from audio file using Wav2Vec2 model.
+    
+    Args:
+        audio_path (str): Path to the audio file to process
+        
+    Returns:
+        torch.Tensor: Audio embedding vector, or None if processing fails
+    """
     try:
         try:
             audio_data, sr = sf.read(audio_path)
@@ -77,7 +92,16 @@ def get_embed(audio_path):
         return None
 
 def calculate_similarity(emb1, emb2):
-    """Calculate cosine similarity between two embeddings"""
+    """
+    Calculate cosine similarity between two embeddings.
+    
+    Args:
+        emb1 (torch.Tensor): First embedding vector
+        emb2 (torch.Tensor): Second embedding vector
+        
+    Returns:
+        float: Cosine similarity score between -1 and 1, or None if inputs are invalid
+    """
     if emb1 is None or emb2 is None:
         return None
     sim = torch.nn.functional.cosine_similarity(emb1, emb2)
