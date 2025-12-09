@@ -47,8 +47,9 @@ def load_model():
 
 processor, model = load_model()
 
-TARGET_SR = 16000
-TARGET_LEN = int(5 * TARGET_SR)
+# Audio processing constants
+TARGET_SR = 16000  # Target sample rate for Wav2Vec2 model
+TARGET_LEN = int(5 * TARGET_SR)  # Target audio length: 5 seconds
 
 def get_embed(audio_path):
     """
@@ -110,6 +111,7 @@ def calculate_similarity(emb1, emb2):
     sim = torch.nn.functional.cosine_similarity(emb1, emb2)
     return sim.item()
 
+# Reference audio file mappings
 REFERENCE_AUDIOS = {
     "male": {
         "A": "male_A1.wav",
