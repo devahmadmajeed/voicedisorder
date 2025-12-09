@@ -77,5 +77,6 @@ A Streamlit app that compares voice recordings with reference audio samples usin
    streamlit run app.py
    ```
 
+## License
 
-
+This project is open source and available for educational purposes.
